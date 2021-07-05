@@ -3,9 +3,9 @@ local function init(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
-			vim.cmd(
-				"TSInstall dart yaml vue tsx typescript toml teal svelte rust lua json javascript html go bash nix fennel c c_sharp cpp fish gomod erlang swift r"
-			)
+			-- vim.cmd(
+				-- "TSInstall dart yaml vue tsx typescript toml teal svelte rust lua json javascript html go bash nix fennel c c_sharp cpp fish gomod erlang swift r"
+			-- )
 			vim.cmd("TSUpdate")
 		end,
 		config = function()
