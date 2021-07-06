@@ -10,6 +10,7 @@ autocmd BufNewFile,BufRead *.tmux set filetype=tmux.sh
 autocmd BufNewFile,BufRead *.conf set filetype=sh
 autocmd BufNewFile,BufRead *.purs set filetype=purescript
 autocmd BufNewFile,BufRead .tmux.conf set filetype=tmux.sh
+autocmd BufNewFile,BufRead Brewfile set filetype=ruby
 autocmd BufNewFile,BufRead package.json set filetype=packageJson.json
 augroup END
 ]],
