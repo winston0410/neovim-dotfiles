@@ -4,7 +4,7 @@ local function show_message(id)
 	-- local list = vim.lsp.diagnostic.get_line_diagnostics(0, line - 1, {}, id)
 	-- print('check value', vim.inspect(list))
 	vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })
-	vim.lsp.buf.hover({ focusable = false })
+	-- vim.lsp.buf.hover({ focusable = false })
 end
 
 local function setup(client)
