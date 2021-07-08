@@ -181,6 +181,22 @@ local function init(paq)
 					stdin = false,
 				}
 			end
+			local function latexindent()
+				return {
+					exe = "latexindent",
+					-- args = {"-w", "--", vim.api.nvim_buf_get_name(0)},
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
+			local function tffmt()
+				return {
+					exe = "terraform",
+					-- args = {"-w", "--", vim.api.nvim_buf_get_name(0)},
+					args = { "fmt", "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
 			require("formatter").setup({
 				logging = false,
 				filetype = {
@@ -228,8 +244,8 @@ local function init(paq)
 					elm = { elm_format },
 					elixir = { mix_format },
                     sql = {},
-                    tf = {},
-                    plaintex = {}
+                    tf = { tffmt },
+                    plaintex = { latexindent }
 				},
 			})
 

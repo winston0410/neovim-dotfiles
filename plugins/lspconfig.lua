@@ -55,6 +55,8 @@ local function init(paq)
 				},
 			})
 			lspconfig.dartls.setup({ root_dir = root_dir, on_attach = on_attach })
+			lspconfig.terraformls.setup({ root_dir = root_dir, on_attach = on_attach })
+			lspconfig.texlab.setup({ root_dir = root_dir, on_attach = on_attach })
 			lspconfig.ccls.setup({ root_dir = root_dir, on_attach = on_attach })
 			lspconfig.svelte.setup({ root_dir = root_dir })
 			lspconfig.vuels.setup({ root_dir = root_dir, on_attach = on_attach })
