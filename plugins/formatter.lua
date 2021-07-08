@@ -98,6 +98,14 @@ local function init(paq)
 					stdin = true,
 				}
 			end
+            
+			local function go_sqlfmt()
+				return {
+					exe = "sqlfmt",
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = true,
+				}
+			end
 
 			local function dartfmt()
 				return {
@@ -165,6 +173,14 @@ local function init(paq)
 					stdin = false,
 				}
 			end
+			local function sqlfmt()
+				return {
+					exe = "sqlfmt",
+					-- args = {"-w", "--", vim.api.nvim_buf_get_name(0)},
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
 			require("formatter").setup({
 				logging = false,
 				filetype = {
@@ -193,11 +209,12 @@ local function init(paq)
 					make = {
 						-- prettier
 					},
+                    ruby = {},
 					lua = { stylua },
 					teal = { stylua },
 					rust = { rustfmt },
 					nix = { nixfmt },
-					go = { gofmt, goimports },
+					go = { gofmt, goimports, go_sqlfmt },
 					dart = { dartfmt },
 					haskell = { hindent },
 					purescript = { purty },
@@ -210,6 +227,9 @@ local function init(paq)
 					r = { styler },
 					elm = { elm_format },
 					elixir = { mix_format },
+                    sql = {},
+                    tf = {},
+                    plaintex = {}
 				},
 			})
 
