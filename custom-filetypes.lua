@@ -9,6 +9,7 @@ autocmd BufNewFile,BufRead *.nix set filetype=nix
 autocmd BufNewFile,BufRead *.tmux set filetype=tmux.sh
 autocmd BufNewFile,BufRead *.conf set filetype=sh
 autocmd BufNewFile,BufRead *.purs set filetype=purescript
+autocmd BufNewFile,BufRead *.config set filetype=config
 autocmd BufNewFile,BufRead .tmux.conf set filetype=tmux.sh
 autocmd BufNewFile,BufRead Brewfile set filetype=ruby
 autocmd BufNewFile,BufRead Podfile set filetype=ruby
