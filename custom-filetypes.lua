@@ -8,6 +8,7 @@ autocmd BufNewFile,BufRead *.exs,*.ex set filetype=elixir
 autocmd BufNewFile,BufRead *.nix set filetype=nix
 autocmd BufNewFile,BufRead *.tmux set filetype=tmux.sh
 autocmd BufNewFile,BufRead *.conf set filetype=sh
+autocmd BufNewFile,BufRead *.lock set filetype=sh
 autocmd BufNewFile,BufRead *.purs set filetype=purescript
 autocmd BufNewFile,BufRead *.config set filetype=config
 autocmd BufNewFile,BufRead .tmux.conf set filetype=tmux.sh
