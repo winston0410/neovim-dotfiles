@@ -16,7 +16,13 @@ local function init(paq)
 					stdin = false,
 				}
 			end
-
+			local function dhall_format()
+				return {
+					exe = "dhall",
+					args = { "format", "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
 			local function elm_format()
 				-- Not working
 				return {
@@ -256,6 +262,7 @@ local function init(paq)
                     plaintex = { latexindent },
                     ini = { inifmt},
                     dosini = {inifmt},
+                    dhall = { dhall_format },
 				},
 			})
 
