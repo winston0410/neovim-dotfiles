@@ -34,7 +34,7 @@ require("packer").startup(function(use)
 	require("plugins.better-O").init(use)
 	-- require('plugins.reverse-J').init(use)
 	require("plugins.commented").init(use)
-	require("plugins.mark-radar").init(use)
+	require("plugins.bufferline").init(use)
 end)
 
 require("plugins.smart_number").setup()
