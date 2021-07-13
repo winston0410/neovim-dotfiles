@@ -2,6 +2,13 @@ local function init(paq)
 	paq({
 		"winston0410/formatter.nvim",
 		config = function()
+			local function inifmt()
+				return {
+					exe = "",
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
 			local function mix_format()
 				return {
 					exe = "mix",
@@ -246,7 +253,9 @@ local function init(paq)
 					elixir = { mix_format },
                     sql = {},
                     tf = { tffmt },
-                    plaintex = { latexindent }
+                    plaintex = { latexindent },
+                    ini = { inifmt},
+                    dosini = {inifmt},
 				},
 			})
 
