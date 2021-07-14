@@ -1,11 +1,19 @@
 local function init(paq)
 	paq({
-		"glepnir/galaxyline.nvim",
-		branch = "main",
+		"hoob3rt/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
-			--require('spaceline')
-			--require('plugins.siduck76')
-			require("plugins.custom-statusbar")
+			require("lualine").setup({
+				options = { theme = "tokyonight" },
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {},
+				},
+			})
 		end,
 	})
 end
