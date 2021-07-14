@@ -33,12 +33,6 @@ nnoremap o o<esc><cmd>lua require('smart-cursor').indent_cursor()<cr>
 " nnoremap o o<esc>
 " Break a line in normal mode
 nnoremap <C-J> i<CR><ESC>
-"Redo with r
-"noremap r :redo <CR>
-"noremap <C-R> <NOP>
-"Undo with <C-U>
-"nnoremap <C-U> <undo>
-"nnoremap u <NOP>
 "Paste in visual mode without copying
 vnoremap p pgvy
 vnoremap P Pgvy
@@ -49,10 +43,6 @@ nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
 "Load new nvim config"
 nnoremap <silent> <leader>q :luafile $MYVIMRC<CR> 
-
-"tab control"
-nnoremap tn :tabnew 
-nnoremap tc :tabclose <CR>
 
 "Ex-mode
 cnoremap <expr> <c-n> wildmenumode() ? "\<c-n>" : "\<down>"
