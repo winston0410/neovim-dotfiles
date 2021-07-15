@@ -1,16 +1,26 @@
 local function init(use)
 	use({
-		"akinsho/nvim-bufferline.lua",
+		"winston0410/nvim-bufferline.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("bufferline").setup({
-				diagnostics = "nvim_lsp",
-				enforce_regular_tabs = true,
-				show_buffer_close_icons = false,
-				show_close_icon = false,
+				options = {
+					numbers = "ordinal",
+					diagnostics = "nvim_lsp",
+					enforce_regular_tabs = false,
+					show_buffer_close_icons = false,
+					show_close_icon = false,
+					mappings = false,
+					left_mouse_command = "buffer! %d",
+					middle_mouse_command = "buffer! %d",
+					right_mouse_command = "buffer! %d",
+					separator_style = "thin",
+					always_show_bufferline = true,
+					tab_size = 15,
+				},
 			})
 			vim.api.nvim_set_keymap("n", "<c-g>c", ":edit ", { silent = false, noremap = true })
-			vim.api.nvim_set_keymap("n", "<c-g>q", "<cmd>bdelete<cr>", { silent = true, noremap = true })
+			vim.api.nvim_set_keymap("n", "<c-g>q", "<cmd>bwipeout<cr>", { silent = true, noremap = true })
 		end,
 	})
 	use({
