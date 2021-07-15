@@ -36,14 +36,6 @@ nnoremap <C-J> i<CR><ESC>
 "Paste in visual mode without copying
 vnoremap p pgvy
 vnoremap P Pgvy
-"Keymap config for splitting panes"
-nnoremap <leader>j <C-W><C-J>
-nnoremap <leader>k <C-W><C-K>
-nnoremap <leader>l <C-W><C-L>
-nnoremap <leader>h <C-W><C-H>
-"Load new nvim config"
-nnoremap <silent> <leader>q :luafile $MYVIMRC<CR> 
-
 "Ex-mode
 cnoremap <expr> <c-n> wildmenumode() ? "\<c-n>" : "\<down>"
 cnoremap <expr> <c-p> wildmenumode() ? "\<c-p>" : "\<up>"

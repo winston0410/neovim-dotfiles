@@ -37,6 +37,7 @@ require("packer").startup(function(use)
 	-- require('plugins.reverse-J').init(use)
 	require("plugins.commented").init(use)
 	require("plugins.bufferline").init(use)
+	require("plugins.hardmode").init(use)
 end)
 
 require("plugins.smart_number").setup()
