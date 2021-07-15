@@ -13,6 +13,7 @@ autocmd BufNewFile,BufRead *.purs set filetype=purescript
 autocmd BufNewFile,BufRead *.hjson set filetype=hjson
 autocmd BufNewFile,BufRead *.dhall set filetype=dhall
 autocmd BufNewFile,BufRead *.ion set filetype=ion
+autocmd BufNewFile,BufRead *.lean set filetype=lean
 autocmd BufNewFile,BufRead *.config set filetype=config
 autocmd BufNewFile,BufRead .tmux.conf set filetype=tmux.sh
 autocmd BufNewFile,BufRead Brewfile set filetype=ruby
