@@ -32,6 +32,9 @@ local function init(use)
 					{ silent = true, noremap = true }
 				)
 			end
+
+            -- Automatically close status buffer after commit?
+            -- Use filetype to do the trick
 		end,
 	})
 end
