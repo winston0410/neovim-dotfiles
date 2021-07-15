@@ -27,8 +27,6 @@ local function init(use)
 					tab_size = 15,
 				},
 			})
-			vim.api.nvim_set_keymap("n", "<c-g>c", ":edit ", { silent = false, noremap = true })
-			vim.api.nvim_set_keymap("n", "<c-g>q", "<cmd>bwipeout<cr>", { silent = true, noremap = true })
 		end,
 	})
 	use({
