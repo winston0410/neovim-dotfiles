@@ -7,6 +7,14 @@ local function init(use)
 				options = {
 					numbers = "ordinal",
 					diagnostics = "nvim_lsp",
+					diagnostics_indicator = function(count, level, errors)
+						local icons = ""
+                        -- https://github.com/akinsho/nvim-bufferline.lua/issues/144
+						if level == "error" then
+							icons = " "
+						end
+						return icons
+					end,
 					enforce_regular_tabs = false,
 					show_buffer_close_icons = false,
 					show_close_icon = false,
