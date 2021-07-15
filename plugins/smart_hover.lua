@@ -7,7 +7,7 @@ local function show_message(id)
         focusable = false,
         severity = nil,
         severity_limit = nil,
-        -- close_events = { "BufEnter" }
+        close_events = { "BufAdd","TabEnter", "CursorMoved", "BufLeave", "BufUnload"}
     })
 	-- vim.lsp.buf.hover({ focusable = false })
 end

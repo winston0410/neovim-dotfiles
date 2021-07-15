@@ -1,5 +1,10 @@
+" Use utf-8 for viewing files
 set encoding=UTF-8
+" Use utf-8 for file content
+set fileencoding=UTF-8
 set termguicolors
+" Persistant undofile
+set undofile
 " Add mouse support for scrolling correctly in tmux
 set mouse=nvic
 "Reduce time to wait for key combo
