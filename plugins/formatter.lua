@@ -9,6 +9,28 @@ local function init(paq)
 					stdin = false,
 				}
 			end
+			local function njkfmt()
+				return {
+					exe = "",
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
+			local function liquidfmt()
+				return {
+					exe = "",
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
+			local function pugfmt()
+                -- pugfmt
+				return {
+					exe = "",
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
 			local function mix_format()
 				return {
 					exe = "mix",
@@ -270,6 +292,12 @@ local function init(paq)
                     ini = { inifmt},
                     dosini = {inifmt},
                     dhall = { dhall_lint, dhall_format },
+                    pug = { pugfmt },
+                    nunjucks = { njkfmt },
+                    liquid = { liquidfmt },
+                    mustache = {},
+                    wren = {},
+                    haml = {},
 				},
 			})
 
