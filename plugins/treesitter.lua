@@ -4,7 +4,7 @@ local function init(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			-- vim.cmd(
-			-- "TSInstall dart yaml vue tsx typescript toml teal svelte rust lua json javascript html go bash nix fennel c c_sharp cpp fish gomod erlang swift r wast wat ejs"
+			-- "TSInstall dart yaml vue tsx typescript toml teal svelte rust lua json javascript html go bash nix fennel c c_sharp cpp fish gomod erlang swift r wast wat ejs dockerfile"
 			-- )
 			vim.cmd("TSUpdate")
 		end,
