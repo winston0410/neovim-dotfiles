@@ -10,6 +10,9 @@ local function init(paq)
 					lualine_b = { "branch" },
 					lualine_c = {},
 					lualine_x = {
+						-- {
+							-- "filename",
+						-- },
 						{
 							"diagnostics",
 							sources = { "nvim_lsp" },
@@ -19,15 +22,15 @@ local function init(paq)
 							-- color_info = colors.cyan,
 						},
 						{
-                            -- Check if active LSP exist
-							function ()
+							-- Check if active LSP exist
+							function()
 								local msg = ""
 								local clients = vim.lsp.get_active_clients()
 								if #clients < 1 then
 									msg = "年"
-                                    return msg
+									return msg
 								end
-                                return ""
+								return ""
 							end,
 						},
 					},

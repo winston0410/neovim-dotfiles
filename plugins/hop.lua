@@ -1,7 +1,7 @@
 local function init(use)
-	-- paq({ "phaazon/hop.nvim" })
 	use({
-		"winston0410/hop.nvim",
+        "phaazon/hop.nvim",
+		-- "winston0410/hop.nvim",
 		config = function()
 			require("hop").setup({})
 			vim.cmd([[ nmap <Leader><Leader> <cmd>HopChar1<cr>]])

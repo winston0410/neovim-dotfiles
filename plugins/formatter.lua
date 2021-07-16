@@ -1,8 +1,16 @@
 local function init(paq)
 	paq({
-		"winston0410/formatter.nvim",
+		-- "winston0410/formatter.nvim",
+		"mhartington/formatter.nvim",
 		config = function()
 			local function inifmt()
+				return {
+					exe = "",
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
+			local function nimfmt()
 				return {
 					exe = "",
 					args = { "--", vim.api.nvim_buf_get_name(0) },
@@ -24,7 +32,7 @@ local function init(paq)
 				}
 			end
 			local function pugfmt()
-                -- pugfmt
+				-- pugfmt
 				return {
 					exe = "",
 					args = { "--", vim.api.nvim_buf_get_name(0) },
@@ -45,13 +53,13 @@ local function init(paq)
 					stdin = false,
 				}
 			end
-            local function dhall_lint()
-                return {
-                    exe = "dhall",
-                    args = { "lint", "--", vim.api.nvim_buf_get_name(0) },
-                    stdin = false,
-                }
-            end
+			local function dhall_lint()
+				return {
+					exe = "dhall",
+					args = { "lint", "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
 			local function elm_format()
 				-- Not working
 				return {
@@ -140,7 +148,7 @@ local function init(paq)
 					stdin = true,
 				}
 			end
-            
+
 			local function go_sqlfmt()
 				return {
 					exe = "sqlfmt",
@@ -267,7 +275,7 @@ local function init(paq)
 					make = {
 						-- prettier
 					},
-                    ruby = {},
+					ruby = {},
 					lua = { stylua },
 					teal = { stylua },
 					rust = { rustfmt },
@@ -286,18 +294,19 @@ local function init(paq)
 					r = { styler },
 					elm = { elm_format },
 					elixir = { mix_format },
-                    sql = {},
-                    tf = { tffmt },
-                    plaintex = { latexindent },
-                    ini = { inifmt},
-                    dosini = {inifmt},
-                    dhall = { dhall_lint, dhall_format },
-                    pug = { pugfmt },
-                    nunjucks = { njkfmt },
-                    liquid = { liquidfmt },
-                    mustache = {},
-                    wren = {},
-                    haml = {},
+					sql = {},
+					tf = { tffmt },
+					plaintex = { latexindent },
+					ini = { inifmt },
+					dosini = { inifmt },
+					dhall = { dhall_lint, dhall_format },
+					pug = { pugfmt },
+					nunjucks = { njkfmt },
+					liquid = { liquidfmt },
+					mustache = {},
+					wren = {},
+					haml = {},
+					nim = { nimfmt },
 				},
 			})
 

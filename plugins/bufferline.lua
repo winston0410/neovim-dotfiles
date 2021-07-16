@@ -1,6 +1,7 @@
 local function init(use)
 	use({
-		"winston0410/nvim-bufferline.lua",
+        'akinsho/nvim-bufferline.lua',
+		-- "winston0410/nvim-bufferline.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
 			require("bufferline").setup({
