@@ -14,6 +14,7 @@ autocmd BufNewFile,BufRead *.hx set filetype=haxe
 autocmd BufNewFile,BufRead *.hjson set filetype=hjson
 autocmd BufNewFile,BufRead *.dhall set filetype=dhall
 autocmd BufNewFile,BufRead *.ion set filetype=ion
+autocmd BufNewFile,BufRead *.zig set filetype=zig
 autocmd BufNewFile,BufRead *.lean set filetype=lean
 autocmd BufNewFile,BufRead *.ejs set filetype=ejs
 autocmd BufNewFile,BufRead *.njk set filetype=nunjucks
