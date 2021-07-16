@@ -10,6 +10,7 @@ autocmd BufNewFile,BufRead *.tmux set filetype=tmux.sh
 autocmd BufNewFile,BufRead *.conf set filetype=sh
 autocmd BufNewFile,BufRead *.lock set filetype=sh
 autocmd BufNewFile,BufRead *.purs set filetype=purescript
+autocmd BufNewFile,BufRead *.hx set filetype=haxe
 autocmd BufNewFile,BufRead *.hjson set filetype=hjson
 autocmd BufNewFile,BufRead *.dhall set filetype=dhall
 autocmd BufNewFile,BufRead *.ion set filetype=ion
