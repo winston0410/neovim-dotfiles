@@ -13,6 +13,7 @@ autocmd BufNewFile,BufRead *.purs set filetype=purescript
 autocmd BufNewFile,BufRead *.hx set filetype=haxe
 autocmd BufNewFile,BufRead *.hjson set filetype=hjson
 autocmd BufNewFile,BufRead *.dhall set filetype=dhall
+autocmd BufNewFile,BufRead *.gyp set filetype=gyp
 autocmd BufNewFile,BufRead *.ion set filetype=ion
 autocmd BufNewFile,BufRead *.zig set filetype=zig
 autocmd BufNewFile,BufRead *.lean set filetype=lean
