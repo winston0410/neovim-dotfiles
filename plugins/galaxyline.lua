@@ -33,7 +33,7 @@ local function init(paq)
 							-- color_error = colors.red,
 							-- color_warn = colors.yellow,
 							-- color_info = colors.cyan,
-							color = { bg = colors.bg_statusline },
+							-- color = { bg = colors.bg_statusline, gui = "effect" },
 						},
 						{
 							-- Check if active LSP exist
@@ -46,7 +46,7 @@ local function init(paq)
 								end
 								return ""
 							end,
-							color = { fg = colors.fg, bg = colors.bg_statusline },
+							color = { fg = colors.fg, bg = colors.bg_statusline, gui = "effect" },
 						},
 					},
 				},

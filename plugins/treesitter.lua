@@ -4,7 +4,7 @@ local function init(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			-- vim.cmd(
-			-- "TSInstall dart yaml vue tsx typescript toml teal svelte rust lua json javascript html go bash nix fennel c c_sharp cpp fish gomod erlang swift r wast wat ejs dockerfile"
+			-- "TSInstall dart yaml vue tsx typescript toml teal svelte rust lua json jsonc javascript html go bash nix fennel c c_sharp cpp fish gomod erlang swift r wast wat ejs dockerfile hcl devicetree comment commonlisp bibtex beancount cuda elm gdscript glimmer graphql julia ocaml ql query ruby rst sparql turtle verilog ledger hjson"
 			-- )
 			vim.cmd("TSUpdate")
 		end,
@@ -13,14 +13,26 @@ local function init(use)
 			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 			-- Install custom language parser
 			-- https://github.com/nvim-treesitter/nvim-treesitter#adding-parsers
-			-- parser_config.ninja = {
-			-- install_info = {
-			-- url = "https://github.com/winston0410/tree-sitter-ninja.git",
-			-- files = { "src/parser.c" },
-			-- },
-			-- filetype = "ninja",
-			-- used_by = { "ninja" },
-			-- }
+			parser_config.hjson = {
+				install_info = {
+                    branch = "master",
+					url = "https://github.com/winston0410/tree-sitter-hjson",
+					files = { "src/parser.c" },
+				},
+				filetype = "hjson"
+			}
+			parser_config.jsonc = {
+				install_info = {
+					branch = "main",
+					files = { "src/parser.c" },
+					generate_requires_npm = true,
+					url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc",
+				},
+				maintainers = { "@WhyNotHugo" },
+				readme_name = "JSON with comments",
+				filetype = "jsonc",
+				used_by = { "jsonc" },
+			}
 			parser_config.wast = {
 				install_info = {
 					branch = "main",
