@@ -75,10 +75,8 @@ local function init(paq)
 				on_attach = on_attach,
 				root_dir = root_dir,
 			})
-			local sumneko_root_path = os.getenv("HOME") .. "/.config/standalone/lua-language-server"
-			local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 			lspconfig.sumneko_lua.setup({
-				cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+				cmd = { "lua-language-server" },
 				capabilities = capabilities,
 				settings = {
 					Lua = {
