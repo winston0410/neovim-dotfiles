@@ -1,4 +1,7 @@
 local function init(use)
+
+    vim.api.nvim_exec("command! -nargs=+ -complete=dir -bar Rg lua require'plugins.rg'.asyncGrep(<q-args>)", true)
+    
 	-- use({
 		-- "stevearc/qf_helper.nvim",
 		-- config = function()

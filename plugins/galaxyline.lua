@@ -46,7 +46,7 @@ local function init(paq)
 								end
 								return ""
 							end,
-							color = { fg = colors.fg, bg = colors.bg_statusline, gui = "effect" },
+							color = { fg = colors.fg, bg = colors.bg_statusline},
 						},
 					},
 				},
