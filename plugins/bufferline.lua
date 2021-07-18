@@ -34,6 +34,12 @@ local function init(use)
 		"winston0410/buf-num-nav.nvim",
 		config = function()
 			require("buf-num-nav").setup()
+
+            local direction_keys = { "h", "j", "k", "l"}
+
+            for index, key in ipairs(direction_keys) do
+                vim.api.nvim_set_keymap("n", "<c-g>".. key, "<c-w>" .. key, { silent = true, noremap = true })
+            end
 		end,
 	})
 end
