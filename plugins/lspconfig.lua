@@ -20,9 +20,9 @@ local function init(paq)
 			end
 
 			local lspconfig = require("lspconfig")
-            
+
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-            
+
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 			lspconfig.html.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
@@ -56,15 +56,19 @@ local function init(paq)
 			lspconfig.terraformls.setup({ root_dir = root_dir, on_attach = on_attach })
 			lspconfig.texlab.setup({ root_dir = root_dir, on_attach = on_attach })
 			lspconfig.ccls.setup({ root_dir = root_dir, on_attach = on_attach })
-			lspconfig.svelte.setup({ root_dir = root_dir })
-			lspconfig.vuels.setup({ root_dir = root_dir, on_attach = on_attach })
-			lspconfig.sqls.setup({ on_attach = on_attach, root_dir = root_dir, connections = require("plugins.lsp-servers.sqls-config")})
-			lspconfig.graphql.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.angularls.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.bashls.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.prismals.setup({ on_attach = on_attach, root_dir = root_dir })
+			lspconfig.svelte.setup({ root_dir = root_dir, on_attach = on_attach, capabilities = capabilities })
+			lspconfig.vuels.setup({ root_dir = root_dir, on_attach = on_attach, capabilities = capabilities })
+			lspconfig.sqls.setup({
+				on_attach = on_attach,
+				root_dir = root_dir,
+				connections = require("plugins.lsp-servers.sqls-config"),
+			})
+			lspconfig.graphql.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
+			lspconfig.angularls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
+			lspconfig.bashls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
+			lspconfig.prismals.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
 			-- lspconfig.zeta_note.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.r_language_server.setup({ on_attach = on_attach, root_dir = root_dir })
+			lspconfig.r_language_server.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
 			lspconfig.kotlin_language_server.setup({
 				on_attach = on_attach,
 				root_dir = root_dir,
@@ -104,16 +108,16 @@ local function init(paq)
 				},
 				on_attach = on_attach,
 			})
-			lspconfig.tsserver.setup({ root_dir = root_dir, on_attach = on_attach })
+			lspconfig.tsserver.setup({ root_dir = root_dir, on_attach = on_attach, capabilities = capabilities })
 			-- lspconfig.denols.setup {on_attach = on_attach, root_dir = root_dir}
-			lspconfig.dockerls.setup({ on_attach = on_attach, root_dir = root_dir })
+			lspconfig.dockerls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
 			lspconfig.nimls.setup({ on_attach = on_attach, root_dir = root_dir })
 			lspconfig.metals.setup({ on_attach = on_attach, root_dir = root_dir })
 			lspconfig.julials.setup({ on_attach = on_attach, root_dir = root_dir })
 			lspconfig.purescriptls.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.yamlls.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.vimls.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.rnix.setup({ on_attach = on_attach, root_dir = root_dir })
+			lspconfig.yamlls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
+			lspconfig.vimls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
+			lspconfig.rnix.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
 			lspconfig.pyright.setup({
 				on_attach = on_attach,
 				root_dir = root_dir,
