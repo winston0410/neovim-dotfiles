@@ -136,6 +136,7 @@ local function init(paq)
 			local golint = require("plugins.lsp-servers.golint").config
 			local checkmake = require("plugins.lsp-servers.checkmake").config
 			local vint = require("plugins.lsp-servers.vint").config
+			local svelte_check = require("plugins.lsp-servers.svelte_check").config
 
 			local efm_config = {
 				on_attach = on_attach,
@@ -160,6 +161,7 @@ local function init(paq)
 						python = { flake8 },
 						make = { checkmake },
 						vim = { vint },
+						svelte = { svelte_check },
 					},
 				},
 			}
