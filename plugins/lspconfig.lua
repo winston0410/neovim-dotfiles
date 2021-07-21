@@ -61,7 +61,7 @@ local function init(paq)
 			lspconfig.sqls.setup({
 				on_attach = on_attach,
 				root_dir = root_dir,
-				connections = require("plugins.lsp-servers.sqls-config"),
+				-- connections = require("plugins.lsp-servers.sqls-config"),
 			})
 			lspconfig.graphql.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
 			lspconfig.angularls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
@@ -124,45 +124,11 @@ local function init(paq)
 				cmd = { "pyright-langserver", "--stdio" },
 			})
 
-			local eslint = require("plugins.lsp-servers.eslint").config
-			local shellcheck = require("plugins.lsp-servers.shellcheck").config
-			local markdownlint = require("plugins.lsp-servers.markdownlint").config
-			local hadolint = require("plugins.lsp-servers.hadolint").config
-			local dotenv_linter = require("plugins.lsp-servers.dotenv_linter").config
-			local htmlhint = require("plugins.lsp-servers.htmlhint").config
-			local yamllint = require("plugins.lsp-servers.yamllint").config
-			local fixjson = require("plugins.lsp-servers.fixjson").config
-			local flake8 = require("plugins.lsp-servers.flake8").config
-			local golint = require("plugins.lsp-servers.golint").config
-			local checkmake = require("plugins.lsp-servers.checkmake").config
-			local vint = require("plugins.lsp-servers.vint").config
-			local svelte_check = require("plugins.lsp-servers.svelte_check").config
-
 			local efm_config = {
 				on_attach = on_attach,
 				root_dir = root_dir,
 				settings = {
-					languages = {
-						javascript = { eslint },
-						html = { htmlhint },
-						javascriptreact = { eslint },
-						["javascript.jsx"] = { eslint },
-						typescript = { eslint },
-						typescriptreact = { eslint },
-						["typescript.jsx"] = { eslint },
-						dockerfile = { hadolint },
-						sh = { shellcheck },
-						zsh = { shellcheck },
-						markdown = { markdownlint },
-						dotenv = { dotenv_linter },
-						yaml = { yamllint },
-						json = { fixjson },
-						go = { golint },
-						python = { flake8 },
-						make = { checkmake },
-						vim = { vint },
-						svelte = { svelte_check },
-					},
+					languages = require("plugins.efm"),
 				},
 			}
 
