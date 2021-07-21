@@ -264,6 +264,7 @@ local function init(paq)
 					sh = { shfmt },
 					zsh = { shfmt },
 					markdown = { prettier },
+                    -- Use fixjson?
 					json = { prettier },
 					yaml = { prettier },
 					toml = { prettier },
