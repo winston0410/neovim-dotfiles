@@ -1,10 +1,11 @@
 local function init(paq)
-	local format_key = "<C-F>"
+    -- Cannot use variable outside config function in config
+	-- local format_key = "<C-F>"
 	paq({
 		-- "winston0410/formatter.nvim",
 		"mhartington/formatter.nvim",
 		opt = true,
-		key = { format_key },
+		keys = { { "n", "<C-F>" } },
 		config = function()
 			local function inifmt()
 				return {
@@ -314,7 +315,7 @@ local function init(paq)
 				},
 			})
 
-			vim.api.nvim_set_keymap("n", format_key, "<cmd>write<bar>Format<cr>", { silent = true, noremap = true })
+			vim.api.nvim_set_keymap("n", "<C-F>", "<cmd>write<bar>Format<cr>", { silent = true, noremap = true })
 		end,
 	})
 end
