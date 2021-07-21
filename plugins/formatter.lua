@@ -1,7 +1,10 @@
 local function init(paq)
+	local format_key = "<C-F>"
 	paq({
 		-- "winston0410/formatter.nvim",
 		"mhartington/formatter.nvim",
+		opt = true,
+		key = { format_key },
 		config = function()
 			local function inifmt()
 				return {
@@ -264,7 +267,7 @@ local function init(paq)
 					sh = { shfmt },
 					zsh = { shfmt },
 					markdown = { prettier },
-                    -- Use fixjson?
+					-- Use fixjson?
 					json = { prettier },
 					yaml = { prettier },
 					toml = { prettier },
@@ -311,7 +314,7 @@ local function init(paq)
 				},
 			})
 
-			vim.cmd([[ nnoremap <silent> <C-F> <cmd>write <bar> Format<CR>  ]])
+			vim.api.nvim_set_keymap("n", format_key, "<cmd>write<bar>Format<cr>", { silent = true, noremap = true })
 		end,
 	})
 end
