@@ -1,7 +1,8 @@
 local function init(use)
 	use({
-        "phaazon/hop.nvim",
+		"phaazon/hop.nvim",
 		-- "winston0410/hop.nvim",
+		keys = { { "n", "<Leader><Leader>" }, { "v", "<Leader><Leader>" } },
 		config = function()
 			require("hop").setup({})
 			vim.cmd([[ nmap <Leader><Leader> <cmd>HopChar1<cr>]])

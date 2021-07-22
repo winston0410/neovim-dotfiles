@@ -8,6 +8,13 @@ local function init(use)
 			-- )
 			vim.cmd("TSUpdate")
 		end,
+		requires = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+			},
+			{ "nvim-treesitter/playground" },
+			{ "JoosepAlviste/nvim-ts-context-commentstring" },
+		},
 		config = function()
 			local treesitter = require("nvim-treesitter.configs")
 			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
@@ -15,11 +22,11 @@ local function init(use)
 			-- https://github.com/nvim-treesitter/nvim-treesitter#adding-parsers
 			parser_config.hjson = {
 				install_info = {
-                    branch = "master",
+					branch = "master",
 					url = "https://github.com/winston0410/tree-sitter-hjson",
 					files = { "src/parser.c" },
 				},
-				filetype = "hjson"
+				filetype = "hjson",
 			}
 			parser_config.jsonc = {
 				install_info = {
@@ -73,11 +80,31 @@ local function init(use)
 				highlight = { enable = true },
 				indent = { enable = true },
 				context_commentstring = { enable = true, enable_autocmd = true },
+				textobjects = {
+					move = {
+						enable = true,
+						set_jumps = true,
+						goto_next_start = {
+							["]m"] = "@function.outer",
+							["]]"] = "@class.outer",
+						},
+						goto_next_end = {
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
+						},
+						goto_previous_start = {
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
+						},
+						goto_previous_end = {
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
+						},
+					},
+				},
 			})
 		end,
 	})
-	use({ "nvim-treesitter/playground" })
-	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 end
 
 return { init = init }
