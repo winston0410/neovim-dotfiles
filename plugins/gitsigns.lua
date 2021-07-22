@@ -4,6 +4,7 @@ local function init(use)
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("gitsigns").setup({
+				keymaps = {},
 				signs = {
 					add = {
 						hl = "GitSignsAdd",
