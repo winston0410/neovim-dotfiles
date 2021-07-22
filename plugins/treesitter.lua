@@ -103,8 +103,8 @@ local function init(use)
 						goto_next_start = {
 							["xf"] = "@function.outer",
 							["xc"] = "@call.outer",
-							["xz"] = "@conditional.outer",
 							["xs"] = "@parameter.inner",
+							["xz"] = "@conditional.outer",
 						},
 						-- goto_next_end = {
 						-- ["]M"] = "@function.outer",
@@ -113,8 +113,8 @@ local function init(use)
 						goto_previous_start = {
 							["Xf"] = "@function.outer",
 							["Xc"] = "@call.outer",
-							["Xz"] = "@conditional.outer",
 							["Xs"] = "@parameter.inner",
+							["Xz"] = "@conditional.outer",
 						},
 						-- goto_previous_end = {
 						-- ["[M"] = "@function.outer",
