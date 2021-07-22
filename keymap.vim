@@ -23,7 +23,7 @@ vnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>P "+P
 "Remap Y to y$
-nnoremap Y <NOP>
+" nnoremap Y <NOP>
 nnoremap Y y$
 "Make s and S noop for using vim sandwich
 nnoremap S <NOP>

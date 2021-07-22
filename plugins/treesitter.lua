@@ -9,9 +9,7 @@ local function init(use)
 			vim.cmd("TSUpdate")
 		end,
 		requires = {
-			{
-				"nvim-treesitter/nvim-treesitter-textobjects",
-			},
+			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			{ "nvim-treesitter/playground" },
 			{ "JoosepAlviste/nvim-ts-context-commentstring" },
 		},
@@ -76,29 +74,49 @@ local function init(use)
 				filetype = "make",
 				used_by = { "make" },
 			}
+
+			for _, mode in ipairs({ "n", "v" }) do
+				-- Unmap x
+				vim.api.nvim_set_keymap(mode, "x", "<nop>", { silent = true, noremap = true })
+			end
+
 			treesitter.setup({
 				highlight = { enable = true },
 				indent = { enable = true },
 				context_commentstring = { enable = true, enable_autocmd = true },
 				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ai"] = "@conditional.outer",
+							["ii"] = "@conditional.inner",
+							["ac"] = "@call.inner",
+							["ic"] = "@call.outer",
+						},
+					},
 					move = {
 						enable = true,
 						set_jumps = true,
 						goto_next_start = {
 							["xf"] = "@function.outer",
-							-- ["]]"] = "@class.outer",
+							["xc"] = "@call.outer",
+							["xi"] = "@conditional.outer",
 						},
 						-- goto_next_end = {
-							-- ["]M"] = "@function.outer",
-							-- ["]["] = "@class.outer",
+						-- ["]M"] = "@function.outer",
+						-- ["]["] = "@class.outer",
 						-- },
 						goto_previous_start = {
-							["xF"] = "@function.outer",
-							-- ["[["] = "@class.outer",
+							["Xf"] = "@function.outer",
+							["Xc"] = "@call.outer",
+							["Xi"] = "@conditional.outer",
 						},
 						-- goto_previous_end = {
-							-- ["[M"] = "@function.outer",
-							-- ["[]"] = "@class.outer",
+						-- ["[M"] = "@function.outer",
+						-- ["[]"] = "@class.outer",
 						-- },
 					},
 				},
