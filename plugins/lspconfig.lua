@@ -25,6 +25,8 @@ local function init(paq)
 
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+			lspconfig.java_language_server.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
+			lspconfig.groovyls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
 			lspconfig.html.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
 			lspconfig.cssls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
 			lspconfig.jsonls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
