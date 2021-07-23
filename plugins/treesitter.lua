@@ -107,10 +107,13 @@ local function init(use)
 							["xz"] = "@conditional.outer",
 							["xv"] = "@class.outer",
 						},
-						-- goto_next_end = {
-						-- ["]M"] = "@function.outer",
-						-- ["]["] = "@class.outer",
-						-- },
+						goto_next_end = {
+							["xF"] = "@function.outer",
+							["xC"] = "@call.outer",
+							["xS"] = "@parameter.inner",
+							["xZ"] = "@conditional.outer",
+							["xV"] = "@class.outer",
+						},
 						goto_previous_start = {
 							["Xf"] = "@function.outer",
 							["Xc"] = "@call.outer",
@@ -118,10 +121,13 @@ local function init(use)
 							["Xz"] = "@conditional.outer",
 							["Xv"] = "@class.outer",
 						},
-						-- goto_previous_end = {
-						-- ["[M"] = "@function.outer",
-						-- ["[]"] = "@class.outer",
-						-- },
+						goto_previous_end = {
+							["XF"] = "@function.outer",
+							["XC"] = "@call.outer",
+							["XS"] = "@parameter.inner",
+							["XZ"] = "@conditional.outer",
+							["XV"] = "@class.outer",
+						},
 					},
 				},
 			})
