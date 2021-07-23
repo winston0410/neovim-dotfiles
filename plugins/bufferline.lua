@@ -1,8 +1,8 @@
 local function init(use)
 	use({
-        'akinsho/nvim-bufferline.lua',
+		"akinsho/nvim-bufferline.lua",
 		-- "winston0410/nvim-bufferline.lua",
-		requires = "kyazdani42/nvim-web-devicons",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
 			require("bufferline").setup({
 				options = {
@@ -10,7 +10,7 @@ local function init(use)
 					diagnostics = "nvim_lsp",
 					diagnostics_indicator = function(count, level, errors)
 						local icons = ""
-                        -- https://github.com/akinsho/nvim-bufferline.lua/issues/144
+						-- https://github.com/akinsho/nvim-bufferline.lua/issues/144
 						if level == "error" then
 							icons = " "
 						end
@@ -35,11 +35,11 @@ local function init(use)
 		config = function()
 			require("buf-num-nav").setup()
 
-            local direction_keys = { "h", "j", "k", "l"}
+			local direction_keys = { "h", "j", "k", "l" }
 
-            for index, key in ipairs(direction_keys) do
-                vim.api.nvim_set_keymap("n", "<c-g>".. key, "<c-w>" .. key, { silent = true, noremap = true })
-            end
+			for index, key in ipairs(direction_keys) do
+				vim.api.nvim_set_keymap("n", "<c-g>" .. key, "<c-w>" .. key, { silent = true, noremap = true })
+			end
 		end,
 	})
 end

@@ -1,8 +1,12 @@
 local function init(paq)
-	paq({ "folke/tokyonight.nvim", config = function ()
-        vim.g.tokyonight_style = "night"
-        vim.cmd("colorscheme tokyonight")
-    end})
+	paq({
+		"folke/tokyonight.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = function()
+			vim.g.tokyonight_style = "night"
+			vim.cmd("colorscheme tokyonight")
+		end,
+	})
 end
 
 return { init = init }

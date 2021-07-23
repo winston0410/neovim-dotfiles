@@ -5,7 +5,6 @@ local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.n
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.system({ "git", "clone", "https://github.com/winston0410/packer.nvim.git", install_path })
 	vim.api.nvim_command("packadd packer.nvim")
-	vim.api.nvim_command("PackerInstall")
 	vim.api.nvim_command("PackerSync")
 end
 
@@ -16,7 +15,6 @@ require("custom-filetypes")
 
 require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
-	use({ "kyazdani42/nvim-web-devicons" })
 	require("plugins.trouble").init(use)
 	require("plugins.treesitter").init(use)
 	require("plugins.quickfix").init(use)
@@ -39,6 +37,8 @@ require("packer").startup(function(use)
 	require("plugins.commented").init(use)
 	require("plugins.bufferline").init(use)
 	require("plugins.hardmode").init(use)
+    require("plugins.which-key").init(use)
+    -- require("suitcase").setup()
 end)
 
 require("plugins.smart_number").setup()
