@@ -7,7 +7,15 @@ local function init(paq)
 		opt = true,
 		keys = { { "n", "<C-F>" } },
 		config = function()
-			local function inifmt()
+			local function javafmt()
+                -- https://github.com/google/google-java-format
+				return {
+					exe = "",
+					args = { "--", vim.api.nvim_buf_get_name(0) },
+					stdin = false,
+				}
+			end
+            local function inifmt()
 				return {
 					exe = "",
 					args = { "--", vim.api.nvim_buf_get_name(0) },
@@ -291,6 +299,7 @@ local function init(paq)
 					haskell = { hindent },
 					purescript = { purty },
 					kotlin = { ktlint },
+					java = { javafmt },
 					fennel = { fnlfmt },
 					cpp = { clang_format },
 					c = { clang_format },
