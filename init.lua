@@ -21,6 +21,7 @@ local mappings = {
 	{ "S", "<NOP>" },
 	{ "s", "<NOP>" },
 }
+
 vim.api.nvim_set_keymap("n", "gs", ":%s/", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("v", "gs", ":s/", { silent = true, noremap = true })
 -- Important: Paste in visual mode without copying
@@ -41,6 +42,21 @@ vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 vim.cmd("set shortmess+=c")
 
+--Quit default plugin early
+vim.g.loaded_zipPlugin= 1
+vim.g.loaded_zip = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_man = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_remote_plugins = 1
+vim.g.loaded_shada_plugin = 1
+vim.g.loaded_spellfile_plugin = 1
+vim.g.loaded_tarPlugin= 1
+vim.g.loaded_2html_plugin= 1
+vim.g.loaded_tutor_mode_plugin= 1
+
 local global_options = {
 	{ "encoding", "UTF-8" },
 	{ "fileencoding", "UTF-8" },
@@ -56,7 +72,6 @@ local global_options = {
 	{ "showmatch", true },
 	{ "splitbelow", true },
 	{ "splitright", true },
-	{ "clipboard", "unnamed" },
 	{ "lazyredraw", true },
 	{ "ignorecase", true },
 	{ "smartcase", true },
