@@ -19,13 +19,13 @@ local function init(use)
 				vim.api.nvim_set_keymap(
 					mode,
 					"f",
-					"<cmd>HopChar1AC<cr>",
+					"<cmd>HopChar1<cr>",
 					{ noremap = true, silent = true }
 				)
 				vim.api.nvim_set_keymap(
 					mode,
 					"F",
-					"<cmd>HopChar1BC<cr>",
+					"<cmd>HopChar1<cr>",
 					{ noremap = true, silent = true }
 				)
 				-- vim.api.nvim_set_keymap(mode, "<Leader>w", "<cmd>HopWord<cr>", { noremap = true, silent = true })

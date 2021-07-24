@@ -8,9 +8,88 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.api.nvim_command("PackerSync")
 end
 
-vim.cmd([[ source $HOME/.config/nvim/keymap.vim ]])
-vim.cmd([[ source $HOME/.config/nvim/command-alias.vim ]])
-vim.cmd([[ source $HOME/.config/nvim/values.vim ]])
+--Sensible default mapping
+-- Use space as leader key
+vim.g.mapleader = " "
+local modes = { "n", "v" }
+local mappings = {
+	{ "<leader>y", '"+y' },
+	{ "<leader>p", '"+p' },
+	{ "<leader>P", '"+P' },
+	{ "<leader>d", '"+d' },
+	{ "Y", "y$" },
+	{ "S", "<NOP>" },
+	{ "s", "<NOP>" },
+}
+vim.api.nvim_set_keymap("n", "gs", ":%s/", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("v", "gs", ":s/", { silent = true, noremap = true })
+-- Important: Paste in visual mode without copying
+vim.api.nvim_set_keymap("v", "p", "pgvy", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("v", "P", "Pgvy", { silent = true, noremap = true })
+-- Important: Revert back to previous cursor position
+vim.api.nvim_set_keymap("i", "<esc>", "<esc>`^", { silent = true, noremap = true })
+
+for _, mapping in ipairs(mappings) do
+	for _, mode in ipairs(modes) do
+		vim.api.nvim_set_keymap(mode, mapping[1], mapping[2], { silent = true, noremap = true })
+	end
+end
+
+--vim.cmd([[ source $HOME/.config/nvim/values.vim ]])
+vim.cmd "syntax enable"
+--vim.cmd "filetype plugin on"
+vim.cmd "filetype plugin indent on"
+vim.cmd "set shortmess+=c"
+
+local global_options = {
+	{ "encoding", "UTF-8" },
+	{ "fileencoding", "UTF-8" },
+	{ "termguicolors", true },
+	{ "undofile", true },
+	{ "mouse", "nvic" },
+	{ "timeoutlen", 400 },
+	{ "ttimeoutlen", 0 },
+	{ "updatetime", 500 },
+	{ "showmode", false },
+	{ "backup", false },
+	{ "writebackup", false },
+	{ "cmdheight", 1 },
+	{ "showmatch", true },
+	{ "splitbelow", true },
+	{ "splitright", true },
+	{ "clipboard", "unnamed" },
+	{ "shiftwidth", 4 },
+	{ "expandtab", true },
+	{ "lazyredraw", true },
+	{ "autoindent", true },
+	{ "smartindent", false },
+	{ "tabstop", 4 },
+	{ "ignorecase", true },
+	{ "smartcase", true },
+	{ "magic", true },
+	{ "grepprg", "rg --vimgrep --no-heading --smart-case" },
+	{ "grepformat", "%f:%l:%c:%m" },
+	{ "wildmenu", true },
+	{ "wildmode", "longest:full,full" },
+}
+
+for _, option in ipairs(global_options) do
+	vim.api.nvim_set_option(option[1], option[2])
+end
+
+local window_options = {
+	{ "wrap", true },
+	{ "linebreak", true },
+	{ "number", true },
+	{ "relativenumber", true },
+	{ "signcolumn", "yes" },
+	{ "scrolloff", 8 },
+}
+
+for _, option in ipairs(window_options) do
+	vim.api.nvim_win_set_option(0, option[1], option[2])
+end
+
 require("custom-filetypes")
 
 require("packer").startup(function(use)
@@ -37,12 +116,48 @@ require("packer").startup(function(use)
 	require("plugins.commented").init(use)
 	require("plugins.bufferline").init(use)
 	require("plugins.hardmode").init(use)
-    require("plugins.which-key").init(use)
-    -- require("suitcase").setup()
+	-- require("plugins.which-key").init(use)
+	-- require("suitcase").setup()
+	-- require('plugins.nvim_context_vt').init(use)
 end)
 
-require("plugins.smart_number").setup()
-require("plugins.yank_highlight").setup()
--- require('plugins.nvim_context_vt').init(use)
+vim.api.nvim_exec(
+	[[
+  augroup SmartNumberGroup
+  autocmd!
+  autocmd CmdlineEnter : set norelativenumber | redraw
+  autocmd CmdlineLeave : set relativenumber
+  augroup END]],
+	true
+)
 
-vim.cmd([[ source $HOME/.config/nvim/highlight.vim ]])
+vim.api.nvim_exec(
+	[[ 
+	augroup yank_highlight
+	autocmd!
+	au TextYankPost * silent! lua vim.highlight.on_yank { higroup='Visual', timeout=500 }
+	augroup END
+	]],
+	true
+)
+
+vim.cmd([[
+" Change search highlight
+highlight! link Search Visual
+" Change incsearch highlight
+highlight! link IncSearch Visual
+"Override theme highlight
+highlight! link VirtualTextHint Blue 
+highlight! link HintText Blue 
+"gitsigns
+highlight! link GitSignsAdd Green
+highlight! link GitSignsChange Yellow
+highlight! link GitSignsDelete Red
+"LspInfomation
+highlight! link LspDiagnosticsSignHint BlueSign
+" Gitsigns
+highlight! link GitSignsCurrentLineBlame TSComment
+" relativenumber current line highlight
+" Use cleared to make it white
+highlight! link CursorLineNr cleared
+]])
