@@ -36,16 +36,15 @@ for _, mapping in ipairs(mappings) do
 end
 
 --vim.cmd([[ source $HOME/.config/nvim/values.vim ]])
-vim.cmd "syntax enable"
+vim.cmd("syntax enable")
 --vim.cmd "filetype plugin on"
-vim.cmd "filetype plugin indent on"
-vim.cmd "set shortmess+=c"
+vim.cmd("filetype plugin indent on")
+vim.cmd("set shortmess+=c")
 
 local global_options = {
 	{ "encoding", "UTF-8" },
 	{ "fileencoding", "UTF-8" },
 	{ "termguicolors", true },
-	{ "undofile", true },
 	{ "mouse", "nvic" },
 	{ "timeoutlen", 400 },
 	{ "ttimeoutlen", 0 },
@@ -58,12 +57,7 @@ local global_options = {
 	{ "splitbelow", true },
 	{ "splitright", true },
 	{ "clipboard", "unnamed" },
-	{ "shiftwidth", 4 },
-	{ "expandtab", true },
 	{ "lazyredraw", true },
-	{ "autoindent", true },
-	{ "smartindent", false },
-	{ "tabstop", 4 },
 	{ "ignorecase", true },
 	{ "smartcase", true },
 	{ "magic", true },
@@ -88,6 +82,20 @@ local window_options = {
 
 for _, option in ipairs(window_options) do
 	vim.api.nvim_win_set_option(0, option[1], option[2])
+end
+
+local buffer_options = {
+	{ "shiftwidth", 4 },
+	{ "expandtab", true },
+	{ "autoindent", true },
+	{ "smartindent", false },
+	{ "tabstop", 4 },
+	{ "grepprg", "rg --vimgrep --no-heading --smart-case" },
+	{ "undofile", true },
+}
+
+for _, option in ipairs(buffer_options) do
+	vim.api.nvim_buf_set_option(0, option[1], option[2])
 end
 
 require("custom-filetypes")
@@ -117,7 +125,7 @@ require("packer").startup(function(use)
 	require("plugins.bufferline").init(use)
 	require("plugins.hardmode").init(use)
 	-- require("plugins.which-key").init(use)
-	-- require("suitcase").setup()
+	--require("suitcase").setup()
 	-- require('plugins.nvim_context_vt').init(use)
 end)
 
