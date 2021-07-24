@@ -10,7 +10,8 @@ local function init(use)
 		end,
 		requires = {
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-			{ "nvim-treesitter/playground" },
+            --Only use this when developing something related treesitter, slow to start
+			--{ "nvim-treesitter/playground" },
 			{ "JoosepAlviste/nvim-ts-context-commentstring" },
 		},
 		config = function()

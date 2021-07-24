@@ -2,6 +2,7 @@ local function init(use)
 	use({
 		"TimUntersberger/neogit",
 		requires = "nvim-lua/plenary.nvim",
+        keys = { { "n", "<leader>g" }, { "v", "<leader>g" } },
 		config = function()
 			require("neogit").setup({
 				disable_signs = false,
@@ -17,8 +18,6 @@ local function init(use)
 					},
 				},
 			})
-
-			vim.cmd("cnoreabbrev G Neogit")
 
 			local support_modes = { "n", "v" }
 
