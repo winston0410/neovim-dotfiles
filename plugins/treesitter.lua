@@ -13,6 +13,7 @@ local function init(use)
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		branch = "0.5-compat",
 		run = function()
 			-- vim.cmd(
 			-- "TSInstall dart yaml vue tsx typescript toml teal svelte rust lua json jsonc javascript html go bash nix fennel c c_sharp cpp fish gomod erlang swift r wast wat ejs dockerfile hcl devicetree comment commonlisp bibtex beancount cuda elm gdscript glimmer graphql julia ocaml ql query ruby rst sparql turtle verilog ledger hjson"

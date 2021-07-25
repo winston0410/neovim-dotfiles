@@ -2,7 +2,8 @@ local function init(use)
 	use({
 		"akinsho/nvim-bufferline.lua",
 		-- "winston0410/nvim-bufferline.lua",
-        event = "BufRead",
+        event = "BufEnter",
+        after = "tokyonight.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
 			require("bufferline").setup({
