@@ -1,5 +1,16 @@
--- https://github.com/nvim-treesitter/nvim-treesitter-textobject
 local function init(use)
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+		after = "nvim-treesitter",
+	})
+	--Only use this when developing something related treesitter, slow to start
+	--{ "nvim-treesitter/playground" },
+	use({
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+		after = "nvim-treesitter",
+	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -8,12 +19,6 @@ local function init(use)
 			-- )
 			vim.cmd("TSUpdate")
 		end,
-		requires = {
-			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-            --Only use this when developing something related treesitter, slow to start
-			--{ "nvim-treesitter/playground" },
-			{ "JoosepAlviste/nvim-ts-context-commentstring" },
-		},
 		config = function()
 			local treesitter = require("nvim-treesitter.configs")
 			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
