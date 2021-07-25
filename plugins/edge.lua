@@ -1,6 +1,7 @@
 local function init(paq)
 	paq({
 		"folke/tokyonight.nvim",
+        event = "BufRead",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
 			vim.g.tokyonight_style = "night"

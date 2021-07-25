@@ -2,6 +2,7 @@ local function init(use)
 	use({
 		"akinsho/nvim-bufferline.lua",
 		-- "winston0410/nvim-bufferline.lua",
+        event = "BufRead",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
 			require("bufferline").setup({
@@ -32,6 +33,7 @@ local function init(use)
 	})
 	use({
 		"winston0410/buf-num-nav.nvim",
+        after = "nvim-bufferline.lua",
 		config = function()
 			require("buf-num-nav").setup()
 

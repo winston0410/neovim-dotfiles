@@ -1,6 +1,7 @@
 local function init(use)
 	use({
 		"lewis6991/gitsigns.nvim",
+        event = "BufRead",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("gitsigns").setup({
