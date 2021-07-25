@@ -43,7 +43,7 @@ vim.cmd("filetype plugin indent on")
 vim.cmd("set shortmess+=c")
 
 --Quit default plugin early
-vim.g.loaded_zipPlugin= 1
+vim.g.loaded_zipPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_gzip = 1
 vim.g.loaded_man = 1
@@ -53,9 +53,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_remote_plugins = 1
 vim.g.loaded_shada_plugin = 1
 vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_tarPlugin= 1
-vim.g.loaded_2html_plugin= 1
-vim.g.loaded_tutor_mode_plugin= 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
 
 local global_options = {
 	{ "encoding", "UTF-8" },
@@ -96,21 +96,24 @@ local window_options = {
 }
 
 for _, option in ipairs(window_options) do
-	vim.api.nvim_win_set_option(0, option[1], option[2])
+	vim.o[option[1]] = option[2]
+	vim.wo[option[1]] = option[2]
 end
 
+-- Doesn't apply to newly included buffer?
 local buffer_options = {
-	{ "shiftwidth", 4 },
 	{ "expandtab", true },
 	{ "autoindent", true },
 	{ "smartindent", false },
-	{ "tabstop", 4 },
 	{ "grepprg", "rg --vimgrep --no-heading --smart-case" },
 	{ "undofile", true },
+	{ "shiftwidth", 4 },
+	{ "tabstop", 4 },
 }
 
 for _, option in ipairs(buffer_options) do
-	vim.api.nvim_buf_set_option(0, option[1], option[2])
+	vim.o[option[1]] = option[2]
+	vim.bo[option[1]] = option[2]
 end
 
 require("custom-filetypes")
