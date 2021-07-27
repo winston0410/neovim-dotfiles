@@ -1,7 +1,6 @@
 local function init(paq)
 	paq({
 		"neovim/nvim-lspconfig",
-        event = "BufEnter",
 		config = function()
 			local root_dir = function()
 				return vim.fn.getcwd()
