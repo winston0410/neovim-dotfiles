@@ -5,7 +5,7 @@ local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.n
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.system({ "git", "clone", "https://github.com/winston0410/packer.nvim.git", install_path })
 	vim.api.nvim_command("packadd packer.nvim")
-	vim.api.nvim_command("PackerSync")
+	vim.cmd("PackerSync")
 end
 
 --Sensible default mapping
@@ -64,7 +64,7 @@ local global_options = {
 	{ "mouse", "nvic" },
 	{ "timeoutlen", 400 },
 	{ "ttimeoutlen", 0 },
-	{ "updatetime", 500 },
+	{ "updatetime", 300 },
 	{ "showmode", false },
 	{ "backup", false },
 	{ "writebackup", false },
@@ -142,20 +142,13 @@ require("packer").startup(function(use)
 	require("plugins.commented").init(use)
 	require("plugins.bufferline").init(use)
 	require("plugins.hardmode").init(use)
-	require("plugins.suitcase").init(use)
+	require("plugins.nvim-tree").init(use)
+	require("plugins.smart-number").init(use)
+	-- require("plugins.suitcase").init(use)
 	-- require("plugins.which-key").init(use)
 	-- require('plugins.nvim_context_vt').init(use)
 end)
 
-vim.api.nvim_exec(
-	[[
-  augroup SmartNumberGroup
-  autocmd!
-  autocmd CmdlineEnter : set norelativenumber | redraw
-  autocmd CmdlineLeave : set relativenumber
-  augroup END]],
-	true
-)
 
 vim.api.nvim_exec(
 	[[ 
