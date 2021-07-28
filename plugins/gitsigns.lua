@@ -1,7 +1,7 @@
 local function init(use)
 	use({
 		"lewis6991/gitsigns.nvim",
-        event = "BufEnter",
+        event = "CursorHold",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("gitsigns").setup({

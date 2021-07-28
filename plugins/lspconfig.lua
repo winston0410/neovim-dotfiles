@@ -1,6 +1,7 @@
 local function init(paq)
 	paq({
 		"neovim/nvim-lspconfig",
+        -- event = "CursorHold",
 		config = function()
 			local root_dir = function()
 				return vim.fn.getcwd()

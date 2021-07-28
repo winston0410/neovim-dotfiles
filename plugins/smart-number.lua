@@ -12,7 +12,9 @@ end
 
 local exclude_ft = {
     NvimTree = true,
-    packer = true
+    packer = true,
+    NeogitStatus = true,
+    gitcommit = true
 }
 
 local function use_relative_number()

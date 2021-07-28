@@ -149,7 +149,6 @@ require("packer").startup(function(use)
 	-- require('plugins.nvim_context_vt').init(use)
 end)
 
-
 vim.api.nvim_exec(
 	[[ 
 	augroup yank_highlight

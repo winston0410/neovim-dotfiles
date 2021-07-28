@@ -3,13 +3,10 @@ local function init(paq)
 		"winston0410/commented.nvim",
 		config = function()
 			require("commented").setup({
-                --prefer_block_comment = false,
-                --custom_cms = {
-                    --cpp = {
-                        --block = "#if 0%s#endif"
-                    --}
-                --}
-            })
+				hooks = {
+					before_comment = require("ts_context_commentstring.internal").update_commentstring,
+				},
+			})
 		end,
 	})
 end

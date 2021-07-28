@@ -2,14 +2,14 @@ local function init(use)
 	use({
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		requires = { "nvim-treesitter/nvim-treesitter" },
-		after = "nvim-treesitter",
+		-- after = "nvim-treesitter",
 	})
 	--Only use this when developing something related treesitter, slow to start
 	--{ "nvim-treesitter/playground" },
 	use({
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		requires = { "nvim-treesitter/nvim-treesitter" },
-		after = "nvim-treesitter",
+		-- after = "nvim-treesitter",
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -90,7 +90,7 @@ local function init(use)
 			treesitter.setup({
 				highlight = { enable = true },
 				indent = { enable = true },
-				context_commentstring = { enable = true, enable_autocmd = true },
+				context_commentstring = { enable = true, enable_autocmd = false },
 				textobjects = {
 					select = {
 						enable = true,
