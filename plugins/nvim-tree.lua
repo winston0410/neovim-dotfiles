@@ -1,6 +1,7 @@
 local function init(use)
 	use({
 		"kyazdani42/nvim-tree.lua",
+        event = "CursorHold",
 		requires = { {
 			"kyazdani42/nvim-web-devicons",
 			opt = true,
