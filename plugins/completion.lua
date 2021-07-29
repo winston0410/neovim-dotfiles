@@ -3,8 +3,6 @@ local function init(paq)
 		"hrsh7th/nvim-compe",
 		event = "InsertEnter",
 		requires = {
-			-- paq {"rafamadriz/friendly-snippets"}
-			-- paq({ "andersevenrud/compe-tmux" })
 			{ "hrsh7th/vim-vsnip", event = "InsertCharPre" },
 			{ "winston0410/friendly-snippets", event = "InsertCharPre" },
 		},
@@ -40,12 +38,27 @@ local function init(paq)
 				},
 			})
 
-			vim.api.nvim_set_keymap(
-				"i",
-				"<CR>",
-				"compe#confirm('<CR>')",
-				{ expr = true, noremap = true, silent = true }
-			)
+			for _, mode in ipairs({ "i", "s" }) do
+				vim.api.nvim_set_keymap(
+					mode,
+					"<CR>",
+					"compe#confirm('<CR>')",
+					{ expr = true, noremap = true, silent = true }
+				)
+				vim.api.nvim_set_keymap(
+					mode,
+					"<Tab>",
+					"vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'",
+					{ expr = true }
+				)
+
+				vim.api.nvim_set_keymap(
+					mode,
+					"<S-Tab>",
+					"vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)':'<S-Tab>'",
+					{ expr = true }
+				)
+			end
 
 			vim.opt.wildignore = {
 				"*.o",
