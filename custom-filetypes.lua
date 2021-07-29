@@ -26,6 +26,7 @@ autocmd BufNewFile,BufRead *.hbs set filetype=hbs
 autocmd BufNewFile,BufRead *.config set filetype=config
 autocmd BufNewFile,BufRead .tmux.conf set filetype=tmux.sh
 autocmd BufNewFile,BufRead Brewfile set filetype=ruby
+autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead Podfile set filetype=ruby
 autocmd BufNewFile,BufRead *.fish set filetype=fish
 autocmd BufNewFile,BufRead package.json set filetype=packageJson.json
