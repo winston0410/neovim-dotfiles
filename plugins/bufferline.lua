@@ -2,8 +2,8 @@ local function init(use)
 	use({
 		"akinsho/nvim-bufferline.lua",
 		-- "winston0410/nvim-bufferline.lua",
-        event = "BufEnter",
-        after = "tokyonight.nvim",
+		event = "CursorHold",
+		after = "tokyonight.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
 			require("bufferline").setup({
@@ -34,9 +34,24 @@ local function init(use)
 	})
 	use({
 		"winston0410/buf-num-nav.nvim",
-        after = "nvim-bufferline.lua",
+		after = "nvim-bufferline.lua",
+		requires = {
+			{
+				"ojroques/nvim-bufdel",
+				config = function()
+					require("bufdel").setup({
+						next = "alternate",
+					})
+				end,
+			},
+		},
 		config = function()
-			require("buf-num-nav").setup()
+			require("buf-num-nav").setup({
+				commands = {
+                    -- TODO: cannot update nvimtree current file with <bar>NvimTreeRefresh
+					bufdelete = "BufDel",
+				},
+			})
 
 			local direction_keys = { "h", "j", "k", "l" }
 
