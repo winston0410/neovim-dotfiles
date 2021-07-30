@@ -93,6 +93,8 @@ local window_options = {
 	{ "relativenumber", true },
 	{ "signcolumn", "yes" },
 	{ "scrolloff", 8 },
+    -- Ensure tilde signs are not show at the end of buffer
+    { "fillchars", "eob: "},
 }
 
 for _, option in ipairs(window_options) do
