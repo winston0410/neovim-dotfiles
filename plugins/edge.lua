@@ -9,8 +9,8 @@ local function init(paq)
 			vim.cmd("colorscheme tokyonight")
 
 			local highlight_list = {
-				{ "Search", "Visual" },
-				{ "IncSearch", "Visual" },
+				-- { "Search", "Visual" },
+				-- { "IncSearch", "Visual" },
 				{ "CursorLineNr", "cleared" },
 				-- highlight! link CursorLineNr cleared
 			}

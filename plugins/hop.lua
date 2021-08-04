@@ -3,7 +3,7 @@ local function init(use)
 		"phaazon/hop.nvim",
 		-- "winston0410/hop.nvim",
 		-- keys = { { "n", "<Leader><Leader>" }, { "v", "<Leader><Leader>" } },
-		keys = { { "n", "f" }, { "v", "f" },{ "n", "F" }, { "v", "F" } },
+		keys = { { "n", "<leader>f" }, { "v", "<leader>f" },{ "n", "<leader>F" }, { "v", "<leader>F" } },
 		config = function()
 			require("hop").setup({})
 
@@ -18,13 +18,13 @@ local function init(use)
 				-- )
 				vim.api.nvim_set_keymap(
 					mode,
-					"f",
+					"<leader>f",
 					"<cmd>HopChar1<cr>",
 					{ noremap = true, silent = true }
 				)
 				vim.api.nvim_set_keymap(
 					mode,
-					"F",
+					"<leader>F",
 					"<cmd>HopChar1<cr>",
 					{ noremap = true, silent = true }
 				)
