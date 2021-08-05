@@ -1,7 +1,7 @@
 local function init(paq)
 	paq({
 		"neovim/nvim-lspconfig",
-        -- event = "CursorHold",
+		-- event = "CursorHold",
 		config = function()
 			local root_dir = function()
 				return vim.fn.getcwd()
@@ -26,27 +26,27 @@ local function init(paq)
 
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-            local standard_config = { root_dir = root_dir, capabilities = capabilities, on_attach = on_attach }
+			local Config = { root_dir = root_dir, capabilities = capabilities, on_attach = on_attach }
+			Config.__index = Config
 
-			lspconfig.solargraph.setup(standard_config)
-			lspconfig.vala_ls.setup(standard_config)
-			lspconfig.jdtls.setup(standard_config)
-			lspconfig.groovyls.setup(standard_config)
-			lspconfig.html.setup(standard_config)
-			lspconfig.cssls.setup(standard_config)
-			lspconfig.jsonls.setup(standard_config)
-			lspconfig.elixirls.setup({
+			function Config:new(opts)
+				return setmetatable((opts or {}), Config)
+			end
+
+			lspconfig.solargraph.setup(Config:new())
+			lspconfig.vala_ls.setup(Config:new())
+			lspconfig.jdtls.setup(Config:new())
+			lspconfig.groovyls.setup(Config:new())
+			lspconfig.html.setup(Config:new())
+			lspconfig.cssls.setup(Config:new())
+			lspconfig.jsonls.setup(Config:new())
+			lspconfig.elixirls.setup(Config:new({
 				cmd = { "elixir-ls" },
-				root_dir = root_dir,
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-			lspconfig.leanls.setup(standard_config)
-			lspconfig.dhall_lsp_server.setup(standard_config)
-			lspconfig.hls.setup(standard_config)
-			lspconfig.rust_analyzer.setup({
-				root_dir = root_dir,
-				on_attach = on_attach,
+			}))
+			lspconfig.leanls.setup(Config:new())
+			lspconfig.dhall_lsp_server.setup(Config:new())
+			lspconfig.hls.setup(Config:new())
+			lspconfig.rust_analyzer.setup(Config:new({
 				checkOnSave = {
 					allFeatures = true,
 					-- overrideCommand = {
@@ -58,42 +58,34 @@ local function init(paq)
 					-- "--all-features",
 					-- },
 				},
-			})
-			lspconfig.dartls.setup(standard_config)
-			lspconfig.terraformls.setup(standard_config)
-			lspconfig.texlab.setup(standard_config)
-			lspconfig.ccls.setup(standard_config)
-			lspconfig.svelte.setup(standard_config)
-			lspconfig.vuels.setup(standard_config)
-			lspconfig.sqls.setup({
-				on_attach = on_attach,
-				root_dir = root_dir,
-				-- connections = require("plugins.lsp-servers.sqls-config"),
-			})
-			lspconfig.graphql.setup(standard_config)
-			lspconfig.elmls.setup(standard_config)
-			lspconfig.ocamlls.setup(standard_config)
-			lspconfig.puppet.setup(standard_config)
-			lspconfig.serve_d.setup(standard_config)
-			lspconfig.gdscript.setup(standard_config)
-			lspconfig.scry.setup(standard_config)
-			lspconfig.ember.setup(standard_config)
-			lspconfig.angularls.setup(standard_config)
-			lspconfig.bashls.setup(standard_config)
-			lspconfig.prismals.setup(standard_config)
+			}))
+			lspconfig.dartls.setup(Config:new())
+			lspconfig.terraformls.setup(Config:new())
+			lspconfig.texlab.setup(Config:new())
+			lspconfig.ccls.setup(Config:new())
+			lspconfig.svelte.setup(Config:new())
+			lspconfig.vuels.setup(Config:new())
+			lspconfig.sqls.setup(Config:new())
+			lspconfig.graphql.setup(Config:new())
+			lspconfig.elmls.setup(Config:new())
+			lspconfig.ocamlls.setup(Config:new())
+			lspconfig.puppet.setup(Config:new())
+			lspconfig.serve_d.setup(Config:new())
+			lspconfig.gdscript.setup(Config:new())
+			lspconfig.scry.setup(Config:new())
+			lspconfig.ember.setup(Config:new())
+			lspconfig.angularls.setup(Config:new())
+			lspconfig.bashls.setup(Config:new())
+			lspconfig.prismals.setup(Config:new())
 			-- lspconfig.zeta_note.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.r_language_server.setup(standard_config)
-			lspconfig.kotlin_language_server.setup(standard_config)
-			lspconfig.cmake.setup({
+			lspconfig.r_language_server.setup(Config:new())
+			lspconfig.kotlin_language_server.setup(Config:new())
+			lspconfig.cmake.setup(Config:new({
 				cmd = { "cmake-language-server" },
 				filetypes = { "cmake" },
-				on_attach = on_attach,
-				root_dir = root_dir,
-                capabilities = capabilities
-			})
-			lspconfig.sumneko_lua.setup({
+			}))
+			lspconfig.sumneko_lua.setup(Config:new({
 				cmd = { "lua-language-server" },
-				capabilities = capabilities,
 				settings = {
 					Lua = {
 						runtime = {
@@ -118,46 +110,37 @@ local function init(paq)
 						},
 					},
 				},
-				on_attach = on_attach,
-			})
-			lspconfig.tsserver.setup(standard_config)
+			}))
+			lspconfig.tsserver.setup(Config:new())
 			-- lspconfig.denols.setup(standard_config)
-			lspconfig.dockerls.setup(standard_config)
-			lspconfig.nimls.setup(standard_config)
-			lspconfig.metals.setup(standard_config)
-			lspconfig.julials.setup(standard_config)
-			lspconfig.purescriptls.setup(standard_config)
-			lspconfig.yamlls.setup(standard_config)
-			lspconfig.vimls.setup(standard_config)
-			lspconfig.rnix.setup(standard_config)
-			lspconfig.pyright.setup({
-				on_attach = on_attach,
-				root_dir = root_dir,
+			lspconfig.dockerls.setup(Config:new())
+			lspconfig.nimls.setup(Config:new())
+			lspconfig.metals.setup(Config:new())
+			lspconfig.julials.setup(Config:new())
+			lspconfig.purescriptls.setup(Config:new())
+			lspconfig.yamlls.setup(Config:new())
+			lspconfig.vimls.setup(Config:new())
+			lspconfig.rnix.setup(Config:new())
+			lspconfig.pyright.setup(Config:new({
 				cmd = { "pyright-langserver", "--stdio" },
-                capabilities = capabilities
-			})
+			}))
 
-			local efm_config = {
-				on_attach = on_attach,
-				root_dir = root_dir,
+			local efm_config = Config:new({
 				settings = {
 					languages = require("plugins.efm"),
 				},
-                capabilities = capabilities
-			}
+			})
 
 			efm_config.filetypes = vim.tbl_keys(efm_config.settings.languages)
 
 			lspconfig.efm.setup(efm_config)
 
-			lspconfig.gopls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
+			lspconfig.gopls.setup(Config:new({
 				cmd = { "gopls", "serve" },
 				settings = {
 					gopls = { analyses = { unusedparams = true }, staticcheck = true },
 				},
-			})
+			}))
 
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false })
 
