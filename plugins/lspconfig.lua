@@ -26,22 +26,24 @@ local function init(paq)
 
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-			lspconfig.solargraph.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
-			lspconfig.vala_ls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
-			lspconfig.jdtls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
-			lspconfig.groovyls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
-			lspconfig.html.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
-			lspconfig.cssls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
-			lspconfig.jsonls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
+            local standard_config = { root_dir = root_dir, capabilities = capabilities, on_attach = on_attach }
+
+			lspconfig.solargraph.setup(standard_config)
+			lspconfig.vala_ls.setup(standard_config)
+			lspconfig.jdtls.setup(standard_config)
+			lspconfig.groovyls.setup(standard_config)
+			lspconfig.html.setup(standard_config)
+			lspconfig.cssls.setup(standard_config)
+			lspconfig.jsonls.setup(standard_config)
 			lspconfig.elixirls.setup({
 				cmd = { "elixir-ls" },
 				root_dir = root_dir,
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-			lspconfig.leanls.setup({ root_dir = root_dir, capabilities = capabilities, on_attach = on_attach })
-			lspconfig.dhall_lsp_server.setup({ root_dir = root_dir, on_attach = on_attach })
-			lspconfig.hls.setup({ root_dir = root_dir, on_attach = on_attach })
+			lspconfig.leanls.setup(standard_config)
+			lspconfig.dhall_lsp_server.setup(standard_config)
+			lspconfig.hls.setup(standard_config)
 			lspconfig.rust_analyzer.setup({
 				root_dir = root_dir,
 				on_attach = on_attach,
@@ -57,39 +59,37 @@ local function init(paq)
 					-- },
 				},
 			})
-			lspconfig.dartls.setup({ root_dir = root_dir, on_attach = on_attach })
-			lspconfig.terraformls.setup({ root_dir = root_dir, on_attach = on_attach })
-			lspconfig.texlab.setup({ root_dir = root_dir, on_attach = on_attach })
-			lspconfig.ccls.setup({ root_dir = root_dir, on_attach = on_attach })
-			lspconfig.svelte.setup({ root_dir = root_dir, on_attach = on_attach, capabilities = capabilities })
-			lspconfig.vuels.setup({ root_dir = root_dir, on_attach = on_attach, capabilities = capabilities })
+			lspconfig.dartls.setup(standard_config)
+			lspconfig.terraformls.setup(standard_config)
+			lspconfig.texlab.setup(standard_config)
+			lspconfig.ccls.setup(standard_config)
+			lspconfig.svelte.setup(standard_config)
+			lspconfig.vuels.setup(standard_config)
 			lspconfig.sqls.setup({
 				on_attach = on_attach,
 				root_dir = root_dir,
 				-- connections = require("plugins.lsp-servers.sqls-config"),
 			})
-			lspconfig.graphql.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.elmls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.ocamlls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.puppet.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.serve_d.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.gdscript.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.scry.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.ember.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.angularls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.bashls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.prismals.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
+			lspconfig.graphql.setup(standard_config)
+			lspconfig.elmls.setup(standard_config)
+			lspconfig.ocamlls.setup(standard_config)
+			lspconfig.puppet.setup(standard_config)
+			lspconfig.serve_d.setup(standard_config)
+			lspconfig.gdscript.setup(standard_config)
+			lspconfig.scry.setup(standard_config)
+			lspconfig.ember.setup(standard_config)
+			lspconfig.angularls.setup(standard_config)
+			lspconfig.bashls.setup(standard_config)
+			lspconfig.prismals.setup(standard_config)
 			-- lspconfig.zeta_note.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.r_language_server.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.kotlin_language_server.setup({
-				on_attach = on_attach,
-				root_dir = root_dir,
-			})
+			lspconfig.r_language_server.setup(standard_config)
+			lspconfig.kotlin_language_server.setup(standard_config)
 			lspconfig.cmake.setup({
 				cmd = { "cmake-language-server" },
 				filetypes = { "cmake" },
 				on_attach = on_attach,
 				root_dir = root_dir,
+                capabilities = capabilities
 			})
 			lspconfig.sumneko_lua.setup({
 				cmd = { "lua-language-server" },
@@ -120,20 +120,21 @@ local function init(paq)
 				},
 				on_attach = on_attach,
 			})
-			lspconfig.tsserver.setup({ root_dir = root_dir, on_attach = on_attach, capabilities = capabilities })
-			-- lspconfig.denols.setup {on_attach = on_attach, root_dir = root_dir}
-			lspconfig.dockerls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.nimls.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.metals.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.julials.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.purescriptls.setup({ on_attach = on_attach, root_dir = root_dir })
-			lspconfig.yamlls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.vimls.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
-			lspconfig.rnix.setup({ on_attach = on_attach, root_dir = root_dir, capabilities = capabilities })
+			lspconfig.tsserver.setup(standard_config)
+			-- lspconfig.denols.setup(standard_config)
+			lspconfig.dockerls.setup(standard_config)
+			lspconfig.nimls.setup(standard_config)
+			lspconfig.metals.setup(standard_config)
+			lspconfig.julials.setup(standard_config)
+			lspconfig.purescriptls.setup(standard_config)
+			lspconfig.yamlls.setup(standard_config)
+			lspconfig.vimls.setup(standard_config)
+			lspconfig.rnix.setup(standard_config)
 			lspconfig.pyright.setup({
 				on_attach = on_attach,
 				root_dir = root_dir,
 				cmd = { "pyright-langserver", "--stdio" },
+                capabilities = capabilities
 			})
 
 			local efm_config = {
@@ -142,6 +143,7 @@ local function init(paq)
 				settings = {
 					languages = require("plugins.efm"),
 				},
+                capabilities = capabilities
 			}
 
 			efm_config.filetypes = vim.tbl_keys(efm_config.settings.languages)
