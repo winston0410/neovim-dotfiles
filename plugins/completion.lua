@@ -32,7 +32,8 @@ local function init(paq)
 					-- spell = { priority = 20 },
 					nvim_lsp = { priority = 95 },
 					nvim_lua = { priority = 50 },
-					vsnip = { priority = 100 },
+                    -- Disable in certain file, as lsp provide identical snippets
+					vsnip = { priority = 100, ignored_filetypes = { "elixir" } },
 					-- rg = { enabled = false, minimum_input = 3, run_when_completions_less_than = 6, priority = 70, ignored_filetypes = { "sql" } },
 					-- tmux = { priority = 60, ignored_filetypes = { "sql" } },
 				},
